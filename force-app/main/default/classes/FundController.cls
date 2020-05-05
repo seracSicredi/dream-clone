@@ -27,6 +27,9 @@ global with sharing class FundController {
         public String sector { get; set; }
 
         @AuraEnabled
+        public String segment { get; set; }
+
+        @AuraEnabled
         public Decimal minYtdReturn { get; set; }
 
         @AuraEnabled
@@ -59,6 +62,7 @@ global with sharing class FundController {
         r.page = (Integer) pageNumber;
         String assetClass = filter.assetClass;
         String sector = filter.sector;
+        String segment = filter.segment;
         Decimal minYtdReturn = filter.minYtdReturn;
         Decimal min1YearReturn = filter.min1YearReturn;
         Decimal min5YearReturn = filter.min5YearReturn;
@@ -74,6 +78,9 @@ global with sharing class FundController {
         if (!String.isBlank(filter.assetClass)) {
             countSQL = countSQL + 'AND Asset_Class__c = :assetClass ';
         }
+        if (!String.isBlank(filter.segment)) {
+            countSQL = countSQL + 'AND Segment__c = :segment ';
+        }
         if (!String.isBlank(filter.sector)) {
             countSQL = countSQL + 'AND Sector__c = :sector ';
         }
@@ -83,13 +90,16 @@ global with sharing class FundController {
             r.pages = 1;
         }
         String sql =
-            'SELECT id, name, abbreviation__c, asset_class__c, sector__r.Name, rating__c, YTD_Return__c, ' +
+            'SELECT id, name, abbreviation__c, asset_class__c, segment__c, sector__r.Name, rating__c, YTD_Return__c, ' +
             'One_Year_Return__c, Two_Year_Return__c, Five_Year_Return__c FROM Fund__c WITH_SECURITY_ENFORCED where name LIKE :key ' +
             'AND YTD_Return__c >= :minYtdReturn AND YTD_Return__c <= :maxYtdReturn ' +
             'AND One_Year_Return__c >= :min1YearReturn AND One_Year_Return__c <= :max1YearReturn ' +
             'AND Five_Year_Return__c >= :min5YearReturn AND Five_Year_Return__c <= :max5YearReturn ';
         if (!String.isBlank(filter.assetClass)) {
             sql = sql + 'AND Asset_Class__c = :assetClass ';
+        }
+        if (!String.isBlank(filter.segment)) {
+            sql = sql + 'AND Segment__c = :segment ';
         }
         if (!String.isBlank(filter.sector)) {
             sql = sql + 'AND Sector__c = :sector ';

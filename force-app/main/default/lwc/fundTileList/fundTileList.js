@@ -11,6 +11,7 @@ export default class FundTileList extends LightningElement {
     _filter = {
         searchKey: '',
         sector: '',
+        segment:'',
         assetClass: '',
         minYtdReturn: -30,
         maxYtdReturn: 30,
@@ -60,6 +61,9 @@ export default class FundTileList extends LightningElement {
         }
         if (event.assetClass !== undefined) {
             this._filter.assetClass = event.assetClass;
+        }
+        if (event.segment !== undefined) {
+            this._filter.segment = event.segment;
         }
         if (event.sector !== undefined) {
             this._filter.sector = event.sector;
