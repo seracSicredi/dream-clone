@@ -16,11 +16,11 @@
         <processMetadataValues>
             <name>textJson</name>
             <value>
-                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;Foi criada uma nova Oportunidade: {![Opportunity].Name} para o cliente {![Opportunity].Account.Name}. O valor da oportunidade é: {![Opportunity].Amount} e seu stage atual é {![Opportunity].StageName}.&quot;}</stringValue>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;O lead {![Lead].FirstName} foi convertido para Oportunidade.&quot;}</stringValue>
             </value>
         </processMetadataValues>
         <name>myRule_1_A1</name>
-        <label>LeadToOpty</label>
+        <label>postChatter</label>
         <locationX>100</locationX>
         <locationY>200</locationY>
         <actionName>chatterPost</actionName>
@@ -28,7 +28,7 @@
         <inputParameters>
             <name>text</name>
             <value>
-                <stringValue>Foi criada uma nova Oportunidade: {!myVariable_current.Name} para o cliente {!myVariable_current.Account.Name}. O valor da oportunidade é: {!myVariable_current.Amount} e seu stage atual é {!myVariable_current.StageName}.</stringValue>
+                <stringValue>O lead {!myVariable_current.FirstName} foi convertido para Oportunidade.</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -40,7 +40,7 @@
         <inputParameters>
             <name>subjectNameOrId</name>
             <value>
-                <stringValue>0058A000004EOULQA4</stringValue>
+                <stringValue>005P0000004YnboIAC</stringValue>
             </value>
         </inputParameters>
     </actionCalls>
@@ -60,7 +60,31 @@
             <name>myRule_1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_1</leftValueReference>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Boolean</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.IsConverted</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -69,27 +93,15 @@
             <connector>
                 <targetReference>myRule_1_A1</targetReference>
             </connector>
-            <label>Opty com Lead Source</label>
+            <label>Converted</label>
         </rules>
     </decisions>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>NOT(ISPICKVAL([Opportunity].LeadSource , &quot;&quot;))
-</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_1</name>
-        <dataType>Boolean</dataType>
-        <expression>NOT(ISPICKVAL({!myVariable_current.LeadSource} , &quot;&quot;))</expression>
-    </formulas>
-    <interviewLabel>LeadToOpty_ChatterMessage-2_InterviewLabel</interviewLabel>
-    <label>LeadToOpty_ChatterMessage</label>
+    <interviewLabel>LeadToOpty-1_InterviewLabel</interviewLabel>
+    <label>LeadToOpty</label>
     <processMetadataValues>
         <name>ObjectType</name>
         <value>
-            <stringValue>Opportunity</stringValue>
+            <stringValue>Lead</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -107,19 +119,19 @@
     <processMetadataValues>
         <name>TriggerType</name>
         <value>
-            <stringValue>onCreateOnly</stringValue>
+            <stringValue>onAllChanges</stringValue>
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
-        <objectType>Opportunity</objectType>
+        <objectType>Lead</objectType>
     </variables>
     <variables>
         <name>myVariable_old</name>
@@ -127,6 +139,6 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
-        <objectType>Opportunity</objectType>
+        <objectType>Lead</objectType>
     </variables>
 </Flow>
