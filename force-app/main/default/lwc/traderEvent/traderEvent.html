@@ -1,0 +1,160 @@
+<template>
+
+
+    <div slot="actions">
+        <lightning-layout>
+
+            <lightning-layout-item>
+                <lightning-button
+                    label="Get Stock"
+                    onclick={init}
+                ></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+
+    <div class="app slds-p-around_x-large" >
+       
+        
+<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+    <thead>
+      <tr class="slds-line-height_reset">
+        <th class="" scope="col">
+          <div class="slds-truncate" title="Symbol">SYMBOL</div>
+        </th>
+        <th class="" scope="col">
+          <div class="slds-truncate" title="Open">OPEN</div>
+        </th>
+        <th class="" scope="col">
+          <div class="slds-truncate" title="Last">LAST</div>
+        </th>
+        <th class="" scope="col">
+          <div class="slds-truncate" title="Change">CHANGE</div>
+        </th>
+        <th class="" scope="col">
+          <div class="slds-truncate" title="High">HIGH</div>
+        </th>
+        <th class="" scope="col">
+          <div class="slds-truncate" title="Low">LOW</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr class="slds-hint-parent">
+            <td data-label="Symbol">
+              <div class="slds-truncate" title="Symbol">GM</div>
+            </td>
+            <td data-label="Open">
+              <div class="slds-truncate" title="Open" if:true={rstockgm}>{rstockgm.open}</div>
+            </td>
+            <td data-label="Last">
+              <div class="slds-truncate" title="Last" if:true={rstockgm}>{rstockgm.price}</div>
+            </td>
+            <td data-label="Change">
+              <div class="slds-truncate" title="Change" if:true={rstockgm}>{rstockgm.change}</div>
+            </td>
+            <td data-label="High">
+              <div class="slds-truncate" title="High" if:true={rstockgm}>{rstockgm.high}</div>
+            </td>
+            <td data-label="Low">
+              <div class="slds-truncate" title="Low" if:true={rstockgm}>{rstockgm.low}</div>
+            </td>
+      
+            </tr>
+
+            <tr class="slds-hint-parent">
+                <td data-label="Symbol">
+                  <div class="slds-truncate" title="Symbol">GE</div>
+                </td>
+                <td data-label="Open">
+                  <div class="slds-truncate" title="Open" if:true={rstockge}>{rstockge.open}</div>
+                </td>
+                <td data-label="Last">
+                  <div class="slds-truncate" title="Last" if:true={rstockge}>{rstockge.price}</div>
+                </td>
+                <td data-label="Change">
+                  <div class="slds-truncate" title="Change" if:true={rstockge}>{rstockge.change}</div>
+                </td>
+                <td data-label="High">
+                  <div class="slds-truncate" title="High" if:true={rstockge}>{rstockge.high}</div>
+                </td>
+                <td data-label="Low">
+                  <div class="slds-truncate" title="Low" if:true={rstockge}>{rstockge.low}</div>
+                </td>          
+            </tr>
+
+            <tr class="slds-hint-parent">
+                <td data-label="Symbol">
+                  <div class="slds-truncate" title="Symbol">JPM</div>
+                </td>
+                <td data-label="Open">
+                  <div class="slds-truncate" title="Open" if:true={rstockjpm}>{rstockjpm.open}</div>
+                </td>
+                <td data-label="Last">
+                  <div class="slds-truncate" title="Last" if:true={rstockjpm}>{rstockjpm.price}</div>
+                </td>
+                <td data-label="Change">
+                  <div class="slds-truncate" title="Change" if:true={rstockjpm}>{rstockjpm.change}</div>
+                </td>
+                <td data-label="High">
+                  <div class="slds-truncate" title="High" if:true={rstockjpm}>{rstockjpm.high}</div>
+                </td>
+                <td data-label="Low">
+                  <div class="slds-truncate" title="Low" if:true={rstockjpm}>{rstockjpm.low}</div>
+                </td>
+               </tr>
+
+               <tr class="slds-hint-parent">
+                <td data-label="Symbol">
+                  <div class="slds-truncate" title="Symbol">LLY</div>
+                </td>
+                <td data-label="Open">
+                  <div class="slds-truncate" title="Open" if:true={rstocklly}>{rstocklly.open}</div>
+                </td>
+                <td data-label="Last">
+                  <div class="slds-truncate" title="Last" if:true={rstocklly}>{rstocklly.price}</div>
+                </td>
+                <td data-label="Change">
+                  <div class="slds-truncate" title="Change" if:true={rstocklly}>{rstocklly.change}</div>
+                </td>
+                <td data-label="High">
+                  <div class="slds-truncate" title="High" if:true={rstocklly}>{rstocklly.high}</div>
+                </td>
+                <td data-label="Low">
+                  <div class="slds-truncate" title="Low" if:true={rstocklly}>{rstocklly.low}</div>
+                </td>
+               </tr>
+
+            <tr class="slds-hint-parent">
+                <td data-label="Symbol">
+                  <div class="slds-truncate" title="Symbol">UAL</div>
+                </td>
+                <td data-label="Open">
+                  <div class="slds-truncate" title="Open" if:true={rstockual}>{rstockual.open}</div>
+                </td>
+                <td data-label="Last">
+                  <div class="slds-truncate" title="Last" if:true={rstockual}>{rstockual.price}</div>
+                </td>
+                <td data-label="Change">
+                  <div class="slds-truncate" title="Change" if:true={rstockual}>{rstockual.change}</div>
+                </td>
+                <td data-label="High">
+                  <div class="slds-truncate" title="High" if:true={rstockual}>{rstockual.high}</div>
+                </td>
+                <td data-label="Low">
+                  <div class="slds-truncate" title="Low" if:true={rstockual}>{rstockual.low}</div>
+                </td>
+               </tr>
+
+
+
+
+
+
+      </tbody>
+  
+  </table>
+  
+  </div>
+  </template>  
