@@ -9,9 +9,6 @@
             <componentName>traderDesktop</componentName>
         </componentInstances>
         <componentInstances>
-            <componentName>snews:News</componentName>
-        </componentInstances>
-        <componentInstances>
             <componentInstanceProperties>
                 <name>context</name>
                 <value>NEWS</value>
