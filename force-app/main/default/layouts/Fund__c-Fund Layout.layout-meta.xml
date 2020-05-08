@@ -46,6 +46,10 @@
                 <behavior>Edit</behavior>
                 <field>Segment__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Investment_Profile__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

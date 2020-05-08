@@ -18,6 +18,29 @@
         <componentInstances>
             <componentInstanceProperties>
                 <name>filterName</name>
+                <value>Investment Profile</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>label</name>
+                <value>Investment Profile</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>max</name>
+                <value>3</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>min</name>
+                <value>1</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>step</name>
+                <value>1</value>
+            </componentInstanceProperties>
+            <componentName>investmentProfile</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>filterName</name>
                 <value>ytd-return</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
